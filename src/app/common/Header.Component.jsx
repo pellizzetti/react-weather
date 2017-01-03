@@ -1,10 +1,10 @@
 import React from 'react';
-import { header } from '../styles';
+import { headerContainer, headerTitle } from '../styles';
 import CityPromptContainer from '../prompt/CityPrompt.Container';
 
 const HeaderComponent = () =>
-  <div style={header}>
-    <h2 style={{ margin: 0 }}>React Weather</h2>
+  <div style={headerContainer}>
+    <h2 style={headerTitle}>React Weather</h2>
     <CityPromptContainer direction="row" />
   </div>;
 

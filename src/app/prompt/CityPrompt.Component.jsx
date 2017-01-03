@@ -34,7 +34,7 @@ const getStyles = props => ({
   flexDirection: props.direction || 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  maxWidth: 300,
+  maxWidth: 400,
   alignSelf: 'right',
 });
 

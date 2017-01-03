@@ -3,13 +3,18 @@ const styles = {
     width: '100%',
     height: '92%',
   },
-  header: {
+  headerContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     background: 'rgba(60, 19, 98, 0.93)',
     color: '#fff',
     padding: 5,
+  },
+  headerTitle: {
+    fontFamily: 'Lato',
+    fontSize: 33,
+    margin: 0,
   },
   homeContainer: {
     backgroundSize: 'cover',
@@ -22,6 +27,7 @@ const styles = {
     width: '100%',
   },
   homePromptTitle: {
+    fontFamily: 'Lato',
     fontSize: 45,
     color: '#fff',
     fontWeight: 100,
