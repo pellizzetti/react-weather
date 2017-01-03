@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CityPromptComponent from './CityPrompt.Component';
+import openWeatherApiHelper from '../utils/openWeatherApi.Helper';
 
 class CityPromptContainer extends Component {
   constructor(props) {
@@ -10,7 +11,12 @@ class CityPromptContainer extends Component {
     this.handleChangeCity = this.handleChangeCity.bind(this);
   }
   handleSubmitCity() {
-    console.log(this.state.city);
+    // openWeatherApiHelper.getCityWeather(this.state.city);
+    // openWeatherApiHelper.getCityForcast(this.state.city);
+    const city = this.state.city;
+    this.setState({ city: '' });
+
+    this.context.router.push(`/forecast/${city}`);
   }
   handleChangeCity(e) {
     this.setState({ city: e.target.value });
@@ -26,6 +32,10 @@ class CityPromptContainer extends Component {
     );
   }
 }
+
+CityPromptContainer.contextTypes = {
+  router: PropTypes.object.isRequired,
+};
 
 CityPromptContainer.propTypes = {
   direction: PropTypes.string,

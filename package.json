@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/pellizzetti/react-weather#readme",
   "dependencies": {
+    "axios": "^0.15.3",
     "html-webpack-plugin": "^2.24.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
