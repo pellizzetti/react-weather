@@ -3,49 +3,46 @@ import axios from 'axios';
 const API_KEY = 'd858fae81053b6dcbadc643e7e9c41a0';
 
 function get(location, query) {
-  return axios.get(`http://api.openweathermap.org/data/2.5/${location}?q=${query}&type=accurate&APPID=${API_KEY}`);
+  return axios.get(`http://api.openweathermap.org/data/2.5/${location}?q=${query}&units=metric&APPID=${API_KEY}`);
 }
 
-function getTotalStars(repos) {
-  return repos.data.reduce((prev, current) => prev + current.stargazers_count, 0);
-}
+const daysMap = {
+  0: 'Sunday',
+  1: 'Monday',
+  2: 'Tuesday',
+  3: 'Wednesday',
+  4: 'Thursday',
+  5: 'Friday',
+  6: 'Saturday',
+};
 
-function getPlayersData(player) {
-  return get('users', `${player.login}/repos`)
-    .then(getTotalStars)
-    .then(totalStars => ({
-      followers: player.followers,
-      totalStars,
-    }));
-}
-
-function calculateScores(players) {
-  return [
-    (players[0].followers * 3) + players[0].totalStars,
-    (players[1].followers * 3) + players[1].totalStars,
-  ];
-}
+const monthsMap = {
+  0: 'Jan',
+  1: 'Feb',
+  2: 'Mar',
+  3: 'Apr',
+  4: 'May',
+  5: 'June',
+  6: 'July',
+  7: 'Aug',
+  8: 'Sept',
+  9: 'Oct',
+  10: 'Nov',
+  11: 'Dec',
+};
 
 const openWeatherApiHelper = {
 
-  getCityWeather(city) {
-    return get('weather', city)
-      .then(weather => console.log(weather.data))
-      .catch(err => console.warn('Error in getCityWeather: ', err));
-  },
-
-  getCityForcast(city) {
+  getCityForecast(city) {
     return get('forecast/daily', city)
-      .then(forecast => console.log(forecast.data))
-      .catch(err => console.warn('Error in getCityForcast: ', err));
+      .catch(err => console.warn('Error in getCityForecast: ', err));
   },
 
-  battle(players) {
-    const playerOneData = getPlayersData(players[0]);
-    const playerTwoData = getPlayersData(players[1]);
-    return axios.all([playerOneData, playerTwoData])
-      .then(calculateScores)
-      .catch(err => console.warn('Error in battle function: ', err));
+  convertUnixToDate(unixTimestmap) {
+    const date = new Date(unixTimestmap * 1000);
+    const day = daysMap[date.getDay()];
+    const month = `${monthsMap[date.getMonth()]} ${date.getDate()}`;
+    return `${day}, ${month}`;
   },
 
 };

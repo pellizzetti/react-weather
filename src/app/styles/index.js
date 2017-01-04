@@ -18,7 +18,7 @@ const styles = {
   },
   homeContainer: {
     backgroundSize: 'cover',
-    backgroundImage: "url('../../public/assets/images/background.jpg')",
+    backgroundImage: "url('/images/background.jpg')",
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -30,6 +30,21 @@ const styles = {
     fontFamily: 'Lato',
     fontSize: 45,
     color: '#fff',
+    fontWeight: 100,
+  },
+  dailyContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    margin: 35,
+  },
+  dailyWeather: {
+    height: 130,
+  },
+  dailyHeader: {
+    fontSize: 30,
+    color: '#333',
     fontWeight: 100,
   },
 };

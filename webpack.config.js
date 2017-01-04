@@ -5,10 +5,10 @@ process.env.NODE_ENV = 'development';
 
 module.exports = {
   entry: [
-    './src/index.js',
+    path.join(__dirname, 'src/index.js'),
   ],
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
   },
   module: {
@@ -22,11 +22,16 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, '/public/index.html'),
+      template: path.join(__dirname, 'public/index.html'),
       inject: 'body',
     }),
   ],
   resolve: {
     extensions: ['', '.js', '.jsx'],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'public/assets'),
+    compress: true,
+    port: 3000,
   },
 };

@@ -1,26 +1,28 @@
 import React, { Component, PropTypes } from 'react';
 import CityPromptComponent from './CityPrompt.Component';
-import openWeatherApiHelper from '../utils/openWeatherApi.Helper';
 
 class CityPromptContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = { city: '' };
-    this.direction = 'column';
+    this.state = {
+      direction: 'column',
+      city: '',
+    };
     this.handleSubmitCity = this.handleSubmitCity.bind(this);
     this.handleChangeCity = this.handleChangeCity.bind(this);
   }
+
   handleSubmitCity() {
-    // openWeatherApiHelper.getCityWeather(this.state.city);
-    // openWeatherApiHelper.getCityForcast(this.state.city);
     const city = this.state.city;
     this.setState({ city: '' });
 
     this.context.router.push(`/forecast/${city}`);
   }
+
   handleChangeCity(e) {
     this.setState({ city: e.target.value });
   }
+
   render() {
     return (
       <CityPromptComponent
