@@ -1,17 +1,16 @@
 import React, { PropTypes } from 'react';
 import { dailyContainer, dailyWeather, dailyHeader } from '../styles';
 
-const DailyForecastComponent = props =>
-  <div role="button" style={dailyContainer} onClick={props.onClick}>
+const DetailForecastComponent = props =>
+  <div style={dailyContainer}>
     <h2 style={dailyHeader}>{props.date}</h2>
     <img style={dailyWeather} alt={props.description} src={`/images/weather-icons/${props.icon}.svg`} />
   </div>;
 
-DailyForecastComponent.propTypes = {
-  onClick: PropTypes.func.isRequired,
+DetailForecastComponent.propTypes = {
   date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
 };
 
-export default DailyForecastComponent;
+export default DetailForecastComponent;

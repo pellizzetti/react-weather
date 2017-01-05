@@ -32,12 +32,14 @@ const styles = {
     color: '#fff',
     fontWeight: 100,
   },
-  dailyContainer: {
+  forecastContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'column',
-    margin: 35,
+    flexDirection: 'row',
+  },
+  dailyContainer: {
+    margin: 25,
   },
   dailyWeather: {
     height: 130,
