@@ -14,9 +14,10 @@ const ForecastComponent = (props) => {
       <h1 style={{ fontFamily: 'Lato', fontSize: 48 }}>{props.cityForecast.city.name}</h1>
       <h2 style={{ fontFamily: 'Lato' }}>Click on a day to find more details</h2>
       <div style={forecastContainer}>
-        {props.cityForecast.list.map(dailyForecast =>
+        {props.cityForecast.list.map((dailyForecast, index) =>
           <DailyForecastContainer
             key={dailyForecast.dt}
+            index={index}
             dailyForecast={dailyForecast}
           />,
         )}
@@ -26,7 +27,7 @@ const ForecastComponent = (props) => {
 
 ForecastComponent.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  cityForecast: React.PropTypes.oneOfType([
+  cityForecast: PropTypes.oneOfType([
     React.PropTypes.arrayOf(PropTypes.any),
     React.PropTypes.objectOf(PropTypes.any),
   ]).isRequired,

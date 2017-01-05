@@ -49,6 +49,12 @@ const styles = {
     color: '#333',
     fontWeight: 100,
   },
+  detailContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  },
 };
 
 module.exports = styles;

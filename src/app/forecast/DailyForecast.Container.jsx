@@ -26,10 +26,11 @@ class DailyForecastContainer extends Component {
     const dailyIcon = this.props.dailyForecast.weather[0].icon;
 
     return (<DailyForecastComponent
+      index={this.props.index}
+      onClick={this.handleClick}
       date={dailyDate}
       description={dailyDescription}
       icon={dailyIcon}
-      onClick={this.handleClick}
     />);
   }
 }
@@ -39,8 +40,11 @@ DailyForecastContainer.contextTypes = {
 };
 
 DailyForecastContainer.propTypes = {
-  params: PropTypes.objectOf(PropTypes.string),
-  city: PropTypes.string,
+  index: PropTypes.number.isRequired,
+  dailyForecast: PropTypes.oneOfType([
+    React.PropTypes.arrayOf(PropTypes.any),
+    React.PropTypes.objectOf(PropTypes.any),
+  ]).isRequired,
 };
 
 export default DailyForecastContainer;
