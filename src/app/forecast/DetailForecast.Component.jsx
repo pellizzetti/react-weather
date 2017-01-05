@@ -1,16 +1,30 @@
 import React, { PropTypes } from 'react';
-import { dailyContainer, dailyWeather, dailyHeader } from '../styles';
+import { weatherImage, weatherDateHeader, detailDescription } from '../styles';
 
 const DetailForecastComponent = props =>
-  <div style={dailyContainer}>
-    <h2 style={dailyHeader}>{props.date}</h2>
-    <img style={dailyWeather} alt={props.description} src={`/images/weather-icons/${props.icon}.svg`} />
+  <div className="col-sm-12 text-center">
+    <h2 style={weatherDateHeader}>{props.location.state.date}</h2>
+    <img style={weatherImage} alt={props.location.state.weather.description} src={`/images/weather-icons/${props.location.state.weather.icon}.svg`} />
+    <div style={detailDescription}>
+      <p>{props.params.city}</p>
+      <p>{props.location.state.weather.description}</p>
+      <hr />
+      <p>Min temp: {props.location.state.temp.min} °C</p>
+      <p>Max temp: {props.location.state.temp.max} °C</p>
+      <p>Humidity: {props.location.state.humidity}</p>
+    </div>
   </div>;
 
 DetailForecastComponent.propTypes = {
-  date: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  params: PropTypes.objectOf(PropTypes.string).isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      date: PropTypes.string,
+      weather: PropTypes.objectOf(PropTypes.any),
+      temp: PropTypes.objectOf(PropTypes.number),
+      humidity: PropTypes.number,
+    }),
+  }).isRequired,
 };
 
 export default DetailForecastComponent;

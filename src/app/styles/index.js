@@ -41,10 +41,10 @@ const styles = {
   dailyContainer: {
     margin: 25,
   },
-  dailyWeather: {
+  weatherImage: {
     height: 130,
   },
-  dailyHeader: {
+  weatherDateHeader: {
     fontSize: 30,
     color: '#333',
     fontWeight: 100,
@@ -54,6 +54,13 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
+  },
+  detailDescription: {
+    fontSize: 34,
+    fontWeight: 100,
+    maxWidth: 400,
+    margin: '0 auto',
+    textAlign: 'center',
   },
 };
 

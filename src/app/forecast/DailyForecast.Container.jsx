@@ -5,18 +5,21 @@ import DailyForecastComponent from './DailyForecast.Component';
 class DailyForecastContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = { dailyForecast: [] };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
     const city = this.context.router.params.city;
-    const dailyForecast = this.state.dailyForecast;
-    this.setState({ dailyForecast: [] });
+    const dailyForecast = this.props.dailyForecast;
 
     this.context.router.push({
       pathname: `/forecast/${city}/detail`,
-      state: dailyForecast,
+      state: {
+        date: openWeatherApiHelper.convertUnixToDate(dailyForecast.dt),
+        weather: dailyForecast.weather[0],
+        temp: dailyForecast.temp,
+        humidity: dailyForecast.humidity,
+      },
     });
   }
 

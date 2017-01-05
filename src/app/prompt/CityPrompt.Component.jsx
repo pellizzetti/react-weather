@@ -19,7 +19,7 @@ const InputField = props =>
   <input
     className="form-control"
     onChange={props.onChangeCity}
-    placeholder="Rio do Sul, Santa Catarina"
+    placeholder="San Francisco, California"
     type="text"
     value={props.city}
   />;

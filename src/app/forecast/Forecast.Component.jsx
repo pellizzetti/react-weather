@@ -28,8 +28,8 @@ const ForecastComponent = (props) => {
 ForecastComponent.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   cityForecast: PropTypes.oneOfType([
-    React.PropTypes.arrayOf(PropTypes.any),
-    React.PropTypes.objectOf(PropTypes.any),
+    PropTypes.arrayOf(PropTypes.any),
+    PropTypes.objectOf(PropTypes.any),
   ]).isRequired,
 };
 
